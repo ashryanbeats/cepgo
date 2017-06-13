@@ -4,16 +4,14 @@ Bootstrap a CEP panel.
 
 ## Dependencies
 
-`CSInterface.js`
-
-## How to use
-
-- Dependencies
-- `ln -s ...`
+`/client/js/libs/CSInterface.js`
 
 ## Todos
 
-- Inject name
+- Inject name in:
   - index.html
-  - manifest.xml
-- Inject bundle ID
+- Add post-install instructions
+  - git
+  - ln -s
+  - add CSInterface
+- Make more manifest settings settable

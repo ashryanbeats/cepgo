@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ExtensionManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   ExtensionBundleId="com.example.cepgo-baby"
-  ExtensionBundleVersion="1.0.0" Version="6.0">
+  ExtensionBundleVersion="1.0.0" Version="7.0">
   <ExtensionList>
     <Extension Id="com.example.cepgo-baby.panel" Version="1.0.0"/>
   </ExtensionList>
@@ -21,8 +21,8 @@
     <Extension Id="com.example.cepgo-baby.panel">
       <DispatchInfo>
         <Resources>
-          <MainPath>./index.html</MainPath>
-          <ScriptPath>./jsx/host-index.jsx</ScriptPath>
+          <MainPath>./client/index.html</MainPath>
+          <ScriptPath>./host/index.jsx</ScriptPath>
           <CEFCommandLine/>
         </Resources>
         <Lifecycle>
