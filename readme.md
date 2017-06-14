@@ -10,8 +10,4 @@ Bootstrap a CEP panel.
 
 - Inject name in:
   - index.html
-- Add post-install instructions
-  - git
-  - ln -s
-  - add CSInterface
 - Make more manifest settings settable
