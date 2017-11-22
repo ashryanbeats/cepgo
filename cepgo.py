@@ -13,9 +13,15 @@ if __name__ == "__main__":
 		dest_dir_input = raw_input("Please provide the path here >>  ")
 		validate_input(r"[^\0]+", dest_dir_input)
 	elif dest_dir_input == "2":
-		dest_dir_input = os.path.expanduser("~") + "/Library/Application Support/Adobe/CEP/extensions/"
+		if sys.platform == "win32":
+			dest_dir_input = os.path.expanduser("~") + "\AppData\Roaming\Adobe\CEP/extensions"
+		elif sys.platform == "darwin":
+			dest_dir_input = os.path.expanduser("~") + "/Library/Application Support/Adobe/CEP/extensions/"
 	elif dest_dir_input == "1":
-		dest_dir_input = "/Library/Application Support/Adobe/CEP/extensions/"
+		if sys.platform == "win32":
+			dest_dir_input = "C:\Program Files\Common Files\Adobe\CEP\extensions/"
+		elif sys.platform == "darwin":	
+			dest_dir_input = "/Library/Application Support/Adobe/CEP/extensions/"
 		print "Make sure to start the application with sudo access"
 
 	bunle_id_input = raw_input("Please choose your bundle id here >>  ")
