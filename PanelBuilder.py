@@ -59,7 +59,7 @@ class PanelBuilder(object):
     			PS = ET.SubElement(host_element, "Host")
     			PS.set("Name", host_id)
     			PS.set("Version", product_version.data[host_id][self.version])
-		indent(manifest_root)
+		self._indent(manifest_root)
 		manifest_tree.write(manifest_path, encoding="UTF-8", xml_declaration=True, method="xml")
 
 	def setup_debug(self, debug_path = None):
@@ -79,18 +79,18 @@ class PanelBuilder(object):
     def _get_script_dir(self):
 	    return os.path.dirname(os.path.realpath(__file__))
 
-
-def indent(elem, level=0):
-  	i = "\n" + level*"  "
-  	if len(elem):
-		if not elem.text or not elem.text.strip():
-			elem.text = i + "  "
-		if not elem.tail or not elem.tail.strip():
-			elem.tail = i
-		for elem in elem:
-			indent(elem, level+1)
-		if not elem.tail or not elem.tail.strip():
-			elem.tail = i
-  	else:
-	    if level and (not elem.tail or not elem.tail.strip()):
-	    	elem.tail = i
+    def _indent(self, elem, level=0):
+		i = "\n" + level*"  "
+	  	if len(elem):
+			if not elem.text or not elem.text.strip():
+				elem.text = i + "  "
+			if not elem.tail or not elem.tail.strip():
+				elem.tail = i
+			for elem in elem:
+				self._indent(elem, level+1)
+			if not elem.tail or not elem.tail.strip():
+				elem.tail = i
+	  	else:
+		    if level and (not elem.tail or not elem.tail.strip()):
+		    	elem.tail = i
+		return elem
