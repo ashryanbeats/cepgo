@@ -1,26 +1,40 @@
 import re
 import sys
+import os
 
 def validate_input(regex, user_input):
 	if not re.match(regex, user_input):
-	  print "invalid user input"
-	  sys.exit()
+		error = """
+
+************** invalid input. Restarting **************
+
+		"""
+		print error
+		os.execl(sys.executable, sys.executable, *sys.argv)
 
 def print_followup_directions():
-    print("")
-    print("Your panel has been created!")
-    print("")
-    print("Don't forget to do the following: ")
-    print("1. Add CSInterface.js to /client/js/lib/")
-    print("(Available here: https://github.com/Adobe-CEP/CEP-Resources)")
-    print("2. git init")
-    print("3. Add this directory to the root or user's .../Adobe/CEO/extensions/ directory.")
-    print("(See the CEP documentation for details)")
+	directions = """
+	Your panel has been created!
+
+	Don't forget to do the following: 
+	1. Add CSInterface.js to /client/js/lib/
+	(Available here: https://github.com/Adobe-CEP/CEP-Resources)
+	2. git init
+	3. Add this directory to the root or user's .../Adobe/CEO/extensions/ directory.
+	(See the CEP documentation for details)
+
+	"""
+	print "directions"
 
 dest_dir_options = """
+
+*******************************************************
+
 	1. Root panel extension folder
 	2. User panel extension folder
 	3. Custom path
+
+*******************************************************
 	"""
 
 cc_version_options = """

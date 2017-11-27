@@ -1,9 +1,9 @@
 import os
+import sys
 from PanelBuilder import PanelBuilder
 from cli_helper import dest_dir_options, cc_version_options, host_options, version_dict, host_dict, validate_input, print_followup_directions
 
-if __name__ == "__main__":
-
+def main ():
 	print dest_dir_options
 
 	dest_dir_input = raw_input("Where would you like to save this panel? >>  ")
@@ -17,11 +17,17 @@ if __name__ == "__main__":
 			dest_dir_input = os.path.expanduser("~") + "\AppData\Roaming\Adobe\CEP/extensions"
 		elif sys.platform == "darwin":
 			dest_dir_input = os.path.expanduser("~") + "/Library/Application Support/Adobe/CEP/extensions/"
+		else:
+			print "Only Mac and Windows are currently supported. Please use option 3 to provide a custom path"
+			main()
 	elif dest_dir_input == "1":
 		if sys.platform == "win32":
 			dest_dir_input = "C:\Program Files\Common Files\Adobe\CEP\extensions/"
 		elif sys.platform == "darwin":	
 			dest_dir_input = "/Library/Application Support/Adobe/CEP/extensions/"
+		else:
+			print "Only Mac and Windows are currently supported. Please use option 3 to provide a custom path"
+			main()
 		print "Make sure to start the application with sudo access"
 
 	bunle_id_input = raw_input("Please choose your bundle id here >>  ")
@@ -51,4 +57,6 @@ if __name__ == "__main__":
 	panel.setup_manifest()
 	print_followup_directions()
 
+if __name__ == "__main__":
+	main()
 
